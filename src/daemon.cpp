@@ -650,7 +650,7 @@ addOutput_Exec(const char *path)
 			pr.close();
 		}
 		daemon_preExec();
-		::execlp("/bin/sh", "/bin/sh", "-c", path, nullptr);
+		::execlp("/system/bin/sh", "/system/bin/sh", "-c", path, nullptr);
 		::perror("exec() failed");
 		::exit(-1);
 	}
@@ -750,7 +750,7 @@ shellCommand(const char *cmd)
 		throw ErrnoException("fork() failed");
 	if (!pid) {
 		daemon_preExec();
-		::execlp("/bin/sh", "/bin/sh", "-c", cmd, nullptr);
+		::execlp("/system/bin/sh", "/system/bin/sh", "-c", cmd, nullptr);
 		::perror("exec() failed");
 		::exit(-1);
 	}
